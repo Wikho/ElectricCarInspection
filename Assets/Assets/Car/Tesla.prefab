@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3980925576346936950}
-  - component: {fileID: 8870399244449141402}
+  - component: {fileID: 6501402261617861202}
   m_Layer: 0
   m_Name: Tesla
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   - {fileID: 8234144214729253136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8870399244449141402
+--- !u!114 &6501402261617861202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,42 +50,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 4598301788244582243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2e505083eca59c4987a2f48f55f44f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bfe470e9b7b55142b218c11294662ca, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CarRevealController
-  carRenderers:
+  m_EditorClassIdentifier: Assembly-CSharp::CarFeatures
+  carBodyRenderers:
   - {fileID: 8020851549342013959}
-  transparentMaterial: {fileID: 2100000, guid: c941fc4d4e4494c4d9b0490d636bd29c, type: 2}
-  transparentGlassMaterial: {fileID: 2100000, guid: c941fc4d4e4494c4d9b0490d636bd29c, type: 2}
-  glassKeyword: glass
-  componentGroups:
-  - type: 1
-    objects:
-    - {fileID: 8723013045279144874}
-  - type: 2
-    objects: []
-  - type: 3
-    objects:
-    - {fileID: 792833069131006634}
-  - type: 4
-    objects:
-    - {fileID: 6265992579064809731}
-  - type: 5
-    objects:
-    - {fileID: 8347301280518735737}
-  - type: 6
-    objects:
-    - {fileID: 2960566129546034962}
-  - type: 7
-    objects:
-    - {fileID: 4367951485689137756}
-  - type: 8
-    objects:
-    - {fileID: 6374740767921901435}
-  - type: 9
-    objects:
-    - {fileID: 7261244693359722383}
-  showAllComponentsWhenInAllMode: 1
+  seeThroughMaterial: {fileID: 2100000, guid: c941fc4d4e4494c4d9b0490d636bd29c, type: 2}
+  components:
+  - displayName: SRS Control Unit
+    type: 9
+    root: {fileID: 792833069131006634}
+  - displayName: Seatbelt Pre-Tensioners
+    type: 10
+    root: {fileID: 2960566129546034962}
+  - displayName: Re-Inforcements
+    type: 11
+    root: {fileID: 7261244693359722383}
+  - displayName: High-Voltage Components
+    type: 9
+    root: {fileID: 6374740767921901435}
+  - displayName: Gas Inflator
+    type: 4
+    root: {fileID: 4367951485689137756}
+  - displayName: Gas Cylinders
+    type: 3
+    root: {fileID: 6265992579064809731}
+  - displayName: Airbags
+    type: 2
+    root: {fileID: 8347301280518735737}
+  - displayName: 12V Battery
+    type: 1
+    root: {fileID: 8723013045279144874}
 --- !u!1001 &558970443683446779
 PrefabInstance:
   m_ObjectHideFlags: 0

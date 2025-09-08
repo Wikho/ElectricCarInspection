@@ -401,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6145432536911992448}
   - component: {fileID: 4142217230608330891}
+  - component: {fileID: 7629315773662352528}
   m_Layer: 5
   m_Name: List Item Button Component - Prefab
   m_TagString: Untagged
@@ -436,6 +437,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4545224347727717272}
   m_CullTransparentMesh: 0
+--- !u!114 &7629315773662352528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545224347727717272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a854b70dcbd944d878e085b43c8625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarComponentButtonUI
+  button: {fileID: 93924485684947850}
+  label: {fileID: 4326309676366905101}
 --- !u!1 &7350378296460898315
 GameObject:
   m_ObjectHideFlags: 0

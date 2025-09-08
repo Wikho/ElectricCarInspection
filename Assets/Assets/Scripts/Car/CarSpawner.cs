@@ -1,4 +1,5 @@
 // CarSpawner.cs
+using System;
 using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
@@ -15,6 +16,8 @@ public class CarSpawner : MonoBehaviour
 
     [Header("Runtime (read-only)")]
     [SerializeField] private GameObject lastSpawned;
+
+    public event Action<GameObject> OnSpawned;
 
     /// <summary>
     /// Spawns the specified car definition.
@@ -43,6 +46,8 @@ public class CarSpawner : MonoBehaviour
         lastSpawned = Instantiate(def.carPrefab, pos, rot, spawnedParent);
         lastSpawned.name = $"{def.displayName}_Instance";
 
+        OnSpawned?.Invoke(lastSpawned);
+
         // Optional: reset scale if prefab is authored at 1.0
         // lastSpawned.transform.localScale = Vector3.one;
     }
@@ -54,7 +59,10 @@ public class CarSpawner : MonoBehaviour
         {
             Destroy(lastSpawned);
             lastSpawned = null;
+            OnSpawned?.Invoke(null); // notify UI we have no car
         }
+
+
     }
 
     /// <summary> Returns the currently spawned car instance (or null). </summary>
