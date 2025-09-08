@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d46cff0ef6c3c94ab9026b04b64c377, type: 3}
-  m_Name: Tesla Model 3
+  m_Name: Test VFX
   m_EditorClassIdentifier: Assembly-CSharp::CarDefinition
-  displayName: Tesla Model 3
-  manufacturer: Tesla Inc.
-  model: Model S
-  year: 2021
-  carPrefab: {fileID: 4598301788244582243, guid: ebe0d6148a0beea41a02109d394e95e9, type: 3}
-  infoPanelImage: {fileID: 21300000, guid: eab3d552151c3d74b9a77de41e4c5059, type: 3}
-  thumbnail: {fileID: 21300000, guid: 0cbfea9498e7635438ab11a07b94f92f, type: 3}
+  displayName: Test VFX
+  manufacturer: Test.Inc
+  model: Test
+  year: 2025
+  carPrefab: {fileID: 6303854499211581246, guid: f36ff63a1422a724993e2c8a74375957, type: 3}
+  thumbnail: {fileID: 3495086814825567685, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
   spawnEuler: {x: 0, y: 0, z: 0}

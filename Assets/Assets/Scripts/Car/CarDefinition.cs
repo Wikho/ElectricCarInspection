@@ -13,6 +13,10 @@ public class CarDefinition : ScriptableObject
     [Header("Prefab to spawn")]
     public GameObject carPrefab;
 
+    [Header("Info Panel")]
+    [Tooltip("Image shown in the CarInfoPanel.")]
+    public Sprite infoPanelImage;
+
     [Header("Optional")]
     public Sprite thumbnail;   // for UI grids later
     public Vector3 spawnOffset = Vector3.zero; // small tweak if needed

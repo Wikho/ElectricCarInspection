@@ -26,10 +26,13 @@ public class CarComponentsUI : MonoBehaviour
 
     CarFeatures _current;
 
+    GameObject _lastBoundInstance; // NEW
+
     void OnEnable()
     {
         if (spawner != null) spawner.OnSpawned += HandleCarSpawned;
-        RebindToCurrentCar();
+
+        RebindToCurrentCar(resetIfNew: false); // CHANGED
         WireButtons();
     }
 
@@ -55,26 +58,50 @@ public class CarComponentsUI : MonoBehaviour
 
     void HandleCarSpawned(GameObject instance)
     {
-        RebindToCurrentCar();
+        // When the spawner notifies a NEW instance, we do want to reset
+        RebindToCurrentCar(resetIfNew: true); // NEW
     }
 
-    void RebindToCurrentCar()
+    // CHANGED: allow caller to decide whether to reset visual state (only when car actually changed)
+    void RebindToCurrentCar(bool resetIfNew) // CHANGED
     {
         _current = null;
         var inst = spawner ? spawner.CurrentInstance : null;
-        if (!inst) { ClearButtons(); return; }
+
+        // If no instance, clear UI state
+        if (!inst)
+        {
+            _lastBoundInstance = null; // NEW
+            ClearButtons();
+            if (carTitle) carTitle.text = "";
+            UpdateModeHint();
+            return;
+        }
+
+        // Detect whether this is a different car than last time
+        bool instanceChanged = (inst != _lastBoundInstance); // NEW
+        _lastBoundInstance = inst; // NEW
 
         _current = inst.GetComponentInChildren<CarFeatures>(true);
-        if (!_current) { ClearButtons(); return; }
+        if (!_current)
+        {
+            ClearButtons();
+            if (carTitle) carTitle.text = inst.name; // still show name if you want
+            UpdateModeHint();
+            return;
+        }
 
-        // reset modes on car change
-        _current.Mode_Normal();
-        if (buildComponentsToggle) buildComponentsToggle.isOn = false;
+        // reset modes on car change ONLY
+        if (resetIfNew && instanceChanged) // CHANGED
+        {
+            _current.Mode_Normal();
+            if (buildComponentsToggle) buildComponentsToggle.isOn = false;
+        }
 
         // update header
         if (carTitle) carTitle.text = inst.name;
 
-        // rebuild buttons
+        // rebuild buttons (safe to do always; does not change component visibility)
         BuildButtons(_current.GetComponentsList());
         UpdateModeHint();
     }

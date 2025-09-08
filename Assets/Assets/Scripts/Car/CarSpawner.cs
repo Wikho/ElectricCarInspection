@@ -17,6 +17,8 @@ public class CarSpawner : MonoBehaviour
     [Header("Runtime (read-only)")]
     [SerializeField] private GameObject lastSpawned;
 
+    public CarDefinition CurrentDefinition { get; private set; }
+
     public event Action<GameObject> OnSpawned;
 
     /// <summary>
@@ -46,6 +48,11 @@ public class CarSpawner : MonoBehaviour
         lastSpawned = Instantiate(def.carPrefab, pos, rot, spawnedParent);
         lastSpawned.name = $"{def.displayName}_Instance";
 
+        CurrentDefinition = def;
+        var tag = lastSpawned.GetComponent<CarDefinitionTag>() ?? lastSpawned.AddComponent<CarDefinitionTag>();
+        tag.definition = def;
+
+
         OnSpawned?.Invoke(lastSpawned);
 
         // Optional: reset scale if prefab is authored at 1.0
@@ -59,10 +66,10 @@ public class CarSpawner : MonoBehaviour
         {
             Destroy(lastSpawned);
             lastSpawned = null;
-            OnSpawned?.Invoke(null); // notify UI we have no car
+            
         }
-
-
+        CurrentDefinition = null;
+        OnSpawned?.Invoke(null); // notify UI we have no car
     }
 
     /// <summary> Returns the currently spawned car instance (or null). </summary>

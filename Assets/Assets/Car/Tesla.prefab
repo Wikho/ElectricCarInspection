@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3980925576346936950}
   - component: {fileID: 6501402261617861202}
+  - component: {fileID: -6768378188212203968}
   m_Layer: 0
   m_Name: Tesla
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MonoBehaviour:
   - displayName: 12V Battery
     type: 1
     root: {fileID: 8723013045279144874}
+--- !u!114 &-6768378188212203968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598301788244582243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79da8828359c12045bc47374f7401211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarDefinitionTag
+  definition: {fileID: 11400000, guid: c2b50f3106c1736419db6d2c1e2cc947, type: 2}
 --- !u!1001 &558970443683446779
 PrefabInstance:
   m_ObjectHideFlags: 0
